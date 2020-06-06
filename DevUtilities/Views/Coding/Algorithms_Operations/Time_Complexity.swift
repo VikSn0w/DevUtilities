@@ -13,6 +13,8 @@ class Time_Complexity: UIViewController, UIPickerViewDataSource,UIPickerViewDele
     var selection = 0
     var Complexities = ["O(n^2)", "O(n*log(n))", "O(n)", "O(nk)", "O(n+k)"]
     
+    @IBOutlet weak var MinusResult: UILabel!
+    @IBOutlet weak var PlusResult: UILabel!
     @IBOutlet weak var OriginalNumber: UITextField!
     @IBOutlet weak var OriginalTime: UITextField!
     @IBOutlet weak var numberElements: UITextField!
@@ -88,7 +90,12 @@ class Time_Complexity: UIViewController, UIPickerViewDataSource,UIPickerViewDele
             aux2 = aux * Double(Costant.text!)!
             finalaux = aux2 * Double(Int(OriginalTime.text!)!)
         }
-        Result.text = String(finalaux)
+        let Plus2percent  = finalaux + (finalaux*2)/100
+        let Minus2percent = finalaux - (finalaux*2)/100
+        PlusResult.text = String("+2%: \(String(Plus2percent)) ms")
+        
+        Result.text = String("Avg: \(String(finalaux)) ms")
+        MinusResult.text = String("-2%: \(String(Minus2percent)) ms")
     }
     
     override func viewDidLoad()

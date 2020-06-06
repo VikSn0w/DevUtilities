@@ -590,6 +590,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DevUtilities/DevUtilities.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = YWUZ5CD858;
 				INFOPLIST_FILE = DevUtilities/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -610,6 +611,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DevUtilities/DevUtilities.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = YWUZ5CD858;
 				INFOPLIST_FILE = DevUtilities/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

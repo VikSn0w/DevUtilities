@@ -1176,7 +1176,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qem-Va-Ulh">
-                                <rect key="frame" x="150" y="700" width="114" height="46"/>
+                                <rect key="frame" x="150" y="744" width="114" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Calculate"/>
@@ -1185,7 +1185,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHF-3G-zMo">
-                                <rect key="frame" x="175" y="616" width="64" height="46"/>
+                                <rect key="frame" x="175" y="660" width="64" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <state key="normal" title="Clear"/>
@@ -1218,7 +1218,14 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vf-RN-j0m">
-                                <rect key="frame" x="20" y="537" width="374" height="51"/>
+                                <rect key="frame" x="20" y="568" width="374" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1m-ia-tZK">
+                                <rect key="frame" x="20" y="528" width="374" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -1239,6 +1246,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTx-la-tXF">
+                                <rect key="frame" x="20" y="620" width="374" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="UYL-sJ-Dg3"/>
@@ -1249,8 +1263,10 @@
                     <navigationItem key="navigationItem" title="Time Complexity" id="cOp-zx-5hz"/>
                     <connections>
                         <outlet property="Costant" destination="6Vf-RN-j0m" id="QJD-w3-XlE"/>
+                        <outlet property="MinusResult" destination="mTx-la-tXF" id="AGD-MR-0WC"/>
                         <outlet property="OriginalNumber" destination="uXy-yh-9h3" id="D0G-G6-37E"/>
                         <outlet property="OriginalTime" destination="7b8-3L-jg7" id="5sa-ry-Q1W"/>
+                        <outlet property="PlusResult" destination="F1m-ia-tZK" id="6UG-v8-H2g"/>
                         <outlet property="Result" destination="6Vf-RN-j0m" id="Jre-gV-mjR"/>
                         <outlet property="numberElements" destination="N8K-Qd-Nxw" id="SoW-6f-EVH"/>
                     </connections>
