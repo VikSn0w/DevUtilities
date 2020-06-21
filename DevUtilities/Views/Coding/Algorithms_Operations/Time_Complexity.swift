@@ -78,7 +78,8 @@ class Time_Complexity: UIViewController, UIPickerViewDataSource,UIPickerViewDele
             finalaux = aux2 * Double(Double(OriginalTime.text!)!)
         }
             
-        else if (Complexities[selection] == "O(n)"){finalaux = aux * Double(Double(OriginalTime.text!)!)}
+        else if (Complexities[selection] == "O(n)")
+        {finalaux = aux * Double(Double(OriginalTime.text!)!)}
             
         else if (Complexities[selection] == "O(n+k)")
         {
@@ -90,6 +91,7 @@ class Time_Complexity: UIViewController, UIPickerViewDataSource,UIPickerViewDele
             aux2 = aux * Double(Costant.text!)!
             finalaux = aux2 * Double(Int(OriginalTime.text!)!)
         }
+        
         let Plus2percent  = finalaux + (finalaux*2)/100
         let Minus2percent = finalaux - (finalaux*2)/100
         PlusResult.text = String("+2%: \(String(Plus2percent)) ms")
