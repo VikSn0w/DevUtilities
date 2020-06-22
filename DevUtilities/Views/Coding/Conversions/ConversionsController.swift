@@ -75,7 +75,7 @@ class ConversionsController: UIViewController, UIPickerViewDataSource,UIPickerVi
             
             while(i < size)
             {
-                if(decimal[i] != "0" || decimal[i] != "1" || decimal[i] != "2" || decimal[i] != "3" || decimal[i] != "4" || decimal[i] != "5" || decimal[i] != "6" || decimal[i] != "7" || decimal[i] != "8" || decimal[i] != "9")
+                if(decimal[i] != "0" && decimal[i] != "1" && decimal[i] != "2" && decimal[i] != "3" && decimal[i] != "4" && decimal[i] != "5" && decimal[i] != "6" && decimal[i] != "7" && decimal[i] != "8" && decimal[i] != "9")
                 {
                     ERROR = 1
                 }
@@ -111,7 +111,7 @@ class ConversionsController: UIViewController, UIPickerViewDataSource,UIPickerVi
             
             while(i < size)
             {
-                if(HEX[i] != "0" || HEX[i] != "1" || HEX[i] != "2" || HEX[i] != "3" || HEX[i] != "4" || HEX[i] != "5" || HEX[i] != "6" || HEX[i] != "7" || HEX[i] != "8" || HEX[i] != "9" || HEX[i] != "A" || HEX[i] != "B" || HEX[i] != "C" || HEX[i] != "D" || HEX[i] != "E" || HEX[i] != "F")
+                if(HEX[i] != "0" && HEX[i] != "1" && HEX[i] != "2" && HEX[i] != "3" && HEX[i] != "4" && HEX[i] != "5" && HEX[i] != "6" && HEX[i] != "7" && HEX[i] != "8" && HEX[i] != "9" && HEX[i] != "A" && HEX[i] != "B" && HEX[i] != "C" && HEX[i] != "D" && HEX[i] != "E" && HEX[i] != "F")
                 {
                     ERROR = true
                 }
@@ -146,7 +146,7 @@ class ConversionsController: UIViewController, UIPickerViewDataSource,UIPickerVi
             
             while(i < size)
             {
-                if(OCT[i] != "0" || OCT[i] != "1" || OCT[i] != "2" || OCT[i] != "3" || OCT[i] != "4" || OCT[i] != "5" || OCT[i] != "6" || OCT[i] != "7")
+                if(OCT[i] != "0" && OCT[i] != "1" && OCT[i] != "2" && OCT[i] != "3" && OCT[i] != "4" && OCT[i] != "5" && OCT[i] != "6" && OCT[i] != "7")
                 {
                     ERROR = true
                 }
@@ -181,7 +181,7 @@ class ConversionsController: UIViewController, UIPickerViewDataSource,UIPickerVi
             
             while(i < size)
             {
-                if(binary[i] != "0" || binary[i] != "1")
+                if(binary[i] != "0" && binary[i] != "1")
                 {
                     ERROR = true
                 }
