@@ -2,7 +2,7 @@
 Good Utilities for Good Devs. An utility app for iOS and macOS written in Swift
 
 
-DevUtilities provides plenty of utilities code by a coder, coded for coders. It has the necessary for fast calculations and operations, like Binary operations, Conversions, IP Operations and many more functions! 
+DevUtilities provides plenty of utilities for coding, coded for coders. It has the necessary for fast calculations and operations, like Binary operations, Conversions, IP Operations and many more functions! 
 
 
 ## Changelog:
