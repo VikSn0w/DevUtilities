@@ -48,6 +48,14 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
         var blue  = 0
     }
     
+    struct hex
+    {
+        var red   = ""
+        var green = ""
+        var blue  = ""
+        var full  = ""
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -104,6 +112,8 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
     }
     @IBAction func CalculateButton(_ sender: Any)
     {
+        var hexStrc = hex()
+        
         var HEX = ""
         
         var RGB = rgb()
@@ -223,7 +233,13 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
                 
                 /*-------------------HEX-------------------*/
                 
-                HEX = "#" + String(Int(RGB.red), radix: 16) + String(Int(RGB.green), radix: 16) + String(Int(RGB.blue), radix: 16)
+                hexStrc.red = String(format:"%02X", Int(RGB.red))
+                hexStrc.green = String(format:"%02X", Int(RGB.green))
+                hexStrc.blue = String(format:"%02X", Int(RGB.blue))
+                
+                hexStrc.full = hexStrc.red + hexStrc.green + hexStrc.blue
+                
+                HEX = "#" + hexStrc.full
                 /*-------------------HSV-------------------*/
                 let Rp = (Double(RGB.red)/255.0)
                 let Gp = (Double(RGB.green)/255.0)
@@ -362,7 +378,12 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
                 if(Cmax == 0) {HSV.saturation = 0}
                 if(Cmax != 0) {HSV.saturation = Delta/Cmax}
                 
-                HEX = "#" + String(Int(RGB.red), radix: 16) + String(Int(RGB.green), radix: 16) + String(Int(RGB.blue), radix: 16)
+                hexStrc.red = String(format:"%02X", Int(RGB.red))
+                hexStrc.green = String(format:"%02X", Int(RGB.green))
+                hexStrc.blue = String(format:"%02X", Int(RGB.blue))
+                
+                hexStrc.full = hexStrc.red + hexStrc.green + hexStrc.blue
+                HEX = "#"+hexStrc.full
             }
         }
         else if(Operations[selection] == "HSV")
@@ -458,8 +479,15 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
                 if(Delta == 0) {HSL.saturation = 0}
                 if(Delta != 0) {HSL.saturation = 1-abs(2*HSL.lightness-1)}
                 
-                HEX = "#" + String(Int(RGB.red), radix: 16) + String(Int(RGB.green), radix: 16) + String(Int(RGB.blue), radix: 16)
-
+                hexStrc.red = String(format:"%02X", Int(RGB.red))
+                hexStrc.green = String(format:"%02X", Int(RGB.green))
+                hexStrc.blue = String(format:"%02X", Int(RGB.blue))
+                
+                hexStrc.full = hexStrc.red + hexStrc.green + hexStrc.blue
+                
+                HEX = "#"+hexStrc.full
+                
+                
             }
         }
         
@@ -483,7 +511,13 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
             outHSV.text = "\(String(format: "%.1f", HSV.hue))°, \(String(format: "%.1f", HSV.saturation*100))%, \(String(format: "%.1f", HSV.value*100))%"
             outHSL.text = "\(String(format: "%.1f", HSL.hue))°, \(String(format: "%.1f", HSL.saturation*100))%, \(String(format: "%.1f", HSL.lightness*100))%"
             
-            colorSquare.textColor = UIColor.init(red: CGFloat(RGB.red/255), green: CGFloat(RGB.green/255), blue: CGFloat(RGB.blue/255), alpha: 100)
+            let foo = "0x"+hexStrc.full
+            let fooInt = (foo as NSString).integerValue
+            print(foo)
+            
+            print(fooInt)
+            
+            colorSquare.textColor = colorWithHexString(hex: HEX)
         }
 
     }
@@ -518,8 +552,32 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
         outHSV.text = ""
         // Do any additional setup after loading the view.
     }
-    
 
+    
+    func colorWithHexString (hex:String) -> UIColor
+    {
+        var cString:String = hex.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
+
+        if (cString.hasPrefix("#")) {
+            cString = (cString as NSString).substring(from: 1)
+        }
+
+        if (cString.count != 6) {
+            return UIColor.gray
+        }
+
+        let rString = (cString as NSString).substring(to: 2)
+        let gString = ((cString as NSString).substring(from: 2) as NSString).substring(to: 2)
+        let bString = ((cString as NSString).substring(from: 4) as NSString).substring(to: 2)
+
+        var r:UInt64 = 0, g:UInt64 = 0, b:UInt64 = 0;
+        Scanner(string: rString).scanHexInt64(&r)
+        Scanner(string: gString).scanHexInt64(&g)
+        Scanner(string: bString).scanHexInt64(&b)
+
+
+        return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
+    }
     /*
     // MARK: - Navigation
 
