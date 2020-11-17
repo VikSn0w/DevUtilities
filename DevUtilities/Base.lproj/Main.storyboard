@@ -208,7 +208,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">2.2 r50
 - Code optimisation
-  - if-else cycles changed to switch-case
+  - if-else cycles changed to switch-case where possible
   - optimisation in IP conversions (SubnetMask)
 - Bug Fixes
 
