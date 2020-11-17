@@ -6,6 +6,12 @@ DevUtilities provides plenty of utilities for coding, coded for coders. It has t
 
 
 ## Changelog:
+### 2.2 r50
+- Code optimisation
+  - if-else cycles changed to switch-case where possible
+  - optimisation in IP conversions (SubnetMask)
+- Bug Fixes
+
 ### 2.1 r34
 - Bug fixes in the Color page
   - Bugs about the HEX components
