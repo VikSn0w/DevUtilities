@@ -1,4 +1,4 @@
-# DevUtilities
+# DevUtilities <img src="https://i.ibb.co/r0XQJ5C/logo.png" width="60" height="60">
 Good Utilities for Good Devs. An utility app for iOS and macOS written in Swift
 
 
