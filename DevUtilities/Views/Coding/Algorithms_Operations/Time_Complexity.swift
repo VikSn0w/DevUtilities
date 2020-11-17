@@ -39,15 +39,18 @@ class Time_Complexity: UIViewController, UIPickerViewDataSource,UIPickerViewDele
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         selection = row
+        var flag = false
         print("Selected : \(Complexities[row])");
-        if(Complexities[selection] == "O(nk)" || Complexities[selection] == "O(n+k)")
+        if(Complexities[row] == "O(nk)" || Complexities[row] == "O(n+k)")
         {
-            Costant.isUserInteractionEnabled = false
+            flag = true
         }
         else
         {
-            Costant.isUserInteractionEnabled = true
+            flag = false
         }
+        Costant.isUserInteractionEnabled = flag
+        print(flag)
     }
     
     @IBAction func Cleat(_ sender: Any)
@@ -57,6 +60,9 @@ class Time_Complexity: UIViewController, UIPickerViewDataSource,UIPickerViewDele
         numberElements.text = ""
         Costant.text        = ""
         Result.text         = ""
+        MinusResult.text    = ""
+        Costant.isUserInteractionEnabled = false
+        PlusResult.text     = ""
     }
     
     @IBAction func Calculate(_ sender: Any)
@@ -67,49 +73,72 @@ class Time_Complexity: UIViewController, UIPickerViewDataSource,UIPickerViewDele
         
         aux  = Double(Double(numberElements.text!)!/Double(OriginalNumber.text!)!)
         
-        if(Complexities[selection] == "O(n^2)")
+        switch (Complexities[selection])
         {
-            aux2 = aux*aux
-            finalaux = aux2 * Double(Double(OriginalTime.text!)!)
-        }
-        else if(Complexities[selection] == "O(n*log(n))")
-        {
-            aux2 = aux * log10(val: aux)
-            finalaux = aux2 * Double(Double(OriginalTime.text!)!)
-        }
-            
-        else if (Complexities[selection] == "O(n)")
-        {finalaux = aux * Double(Double(OriginalTime.text!)!)}
-            
-        else if (Complexities[selection] == "O(n+k)")
-        {
-            aux2 = aux + Double(Costant.text!)!
-            finalaux = aux2 * Double(Int(OriginalTime.text!)!)
-        }
-        else if (Complexities[selection] == "O(nk)")
-        {
-            aux2 = aux * Double(Costant.text!)!
-            finalaux = aux2 * Double(Int(OriginalTime.text!)!)
+            case "O(n^2)":
+                aux2     = aux*aux
+                finalaux = aux2 * Double(Double(OriginalTime.text!)!)
+            break;
+                
+            case "O(n*log(n))":
+                aux2     = aux * log10(val: aux)
+                finalaux = aux2 * Double(Double(OriginalTime.text!)!)
+            break;
+                
+            case "O(n)":
+                finalaux = aux * Double(Double(OriginalTime.text!)!)
+            break;
+                
+            case "O(n+k)":
+                if(Costant.text == "")
+                {
+                    let alert = UIAlertController(title: "ERROR", message: "The costant field is empty!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                else
+                {
+                    aux2     = aux + Double(Costant.text!)!
+                    finalaux = aux2 * Double(Int(OriginalTime.text!)!)
+                }
+            break;
+                
+            case "O(nk)":
+                if(Costant.text == "")
+                {
+                    let alert = UIAlertController(title: "ERROR", message: "The costant field is empty!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                else
+                {
+                    aux2     = aux * Double(Costant.text!)!
+                    finalaux = aux2 * Double(Int(OriginalTime.text!)!)
+                }
+            break;
+                
+            default: break;
         }
         
         let Plus2percent  = finalaux + (finalaux*2)/100
         let Minus2percent = finalaux - (finalaux*2)/100
-        PlusResult.text = String("+2%: \(String(Plus2percent)) ms")
+        PlusResult.text = String("\(String(Plus2percent))")
         
-        Result.text = String("Avg: \(String(finalaux)) ms")
-        MinusResult.text = String("-2%: \(String(Minus2percent)) ms")
+        Result.text = String("\(String(finalaux))")
+        MinusResult.text = String("\(String(Minus2percent))")
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        Costant.isUserInteractionEnabled = true
+        Costant.isUserInteractionEnabled = false
         self.hideskeyboard()
         OriginalNumber.text = ""
         OriginalTime.text   = ""
         numberElements.text = ""
         Costant.text        = ""
         Result.text         = ""
+        
     }
     
     func log10(val: Double) -> Double{return (log(val)/log(10.0))}

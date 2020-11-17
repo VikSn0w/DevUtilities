@@ -170,24 +170,32 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
                 let Delta = Cmax - Cmin
                 
                 //Hue
-                     if(Delta == 0){HSV.hue = 0}
-                else if(Cmax == Rp)
-                     {
-                        HSV.hue = 60 * (((Gp-Bp)/Delta).truncatingRemainder(dividingBy: 6))
-                     }
-                else if(Cmax == Gp)
-                     {
-                        HSV.hue = 60 * (((Bp-Rp)/Delta)+2)
-                     }
-                else if(Cmax == Bp)
-                     {
-                        HSV.hue = 60 * (((Rp-Gp)/Delta)+4)
-                     }
+                if(Delta == 0){HSV.hue = 0}
+                else
+                {
+                    switch (Cmax)
+                    {
+                        case Rp:
+                            HSV.hue = 60 * (((Gp-Bp)/Delta).truncatingRemainder(dividingBy: 6))
+                        break;
+                            
+                        case Gp:
+                            HSV.hue = 60 * (((Bp-Rp)/Delta)+2)
+                        break;
+                            
+                        case Bp:
+                            HSV.hue = 60 * (((Rp-Gp)/Delta)+4)
+                        break;
+                            
+                        default:
+                        break;
+                    }
+                }
                 print(Cmax)
                 
                 //Saturation
                 if(Cmax == 0) {HSV.saturation = 0}
-                if(Cmax != 0) {HSV.saturation = Delta/Cmax}
+                else          {HSV.saturation = Delta/Cmax}
                 
                 //Value
                 HSV.value = Cmax
@@ -198,7 +206,7 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
                 HSL.lightness = ((Cmax + Cmin)/2)
                 
                 if(Delta == 0) {HSL.saturation = 0}
-                if(Delta != 0) {HSL.saturation = 1-abs(2*HSL.lightness-1)}
+                else           {HSL.saturation = 1-abs(2*HSL.lightness-1)}
             }
         }
             
@@ -253,24 +261,32 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
                 let Delta = Cmax - Cmin
                 
                 //Hue
-                     if(Delta == 0){HSV.hue = 0}
-                else if(Cmax == Rp)
-                     {
-                        HSV.hue = 60 * (((Gp-Bp)/Delta).truncatingRemainder(dividingBy: 6))
-                     }
-                else if(Cmax == Gp)
-                     {
-                        HSV.hue = 60 * (((Bp-Rp)/Delta)+2)
-                     }
-                else if(Cmax == Bp)
-                     {
-                        HSV.hue = 60 * (((Rp-Gp)/Delta)+4)
-                     }
+                if(Delta == 0){HSV.hue = 0}
+                else
+                {
+                    switch (Cmax)
+                    {
+                        case Rp:
+                            HSV.hue = 60 * (((Gp-Bp)/Delta).truncatingRemainder(dividingBy: 6))
+                        break;
+                            
+                        case Gp:
+                            HSV.hue = 60 * (((Bp-Rp)/Delta)+2)
+                        break;
+                            
+                        case Bp:
+                            HSV.hue = 60 * (((Rp-Gp)/Delta)+4)
+                        break;
+                            
+                        default: break;
+                    }
+                }
+                
                 print(Cmax)
                 
                 //Saturation
                 if(Cmax == 0) {HSV.saturation = 0}
-                if(Cmax != 0) {HSV.saturation = Delta/Cmax}
+                else          {HSV.saturation = Delta/Cmax}
                 
                 //Value
                 HSV.value = Cmax
@@ -281,7 +297,7 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
                 HSL.lightness = ((Cmax + Cmin)/2)
                 
                 if(Delta == 0) {HSL.saturation = 0}
-                if(Delta != 0) {HSL.saturation = 1-abs(2*HSL.lightness-1)}
+                else           {HSL.saturation = 1-abs(2*HSL.lightness-1)}
             }
         }
         else if(Operations[selection] == "HSL")
@@ -309,9 +325,9 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
             }
             else
             {
-                HSL.hue = Double(leftField.text!)!
+                HSL.hue        = Double(leftField.text!)!
                 HSL.saturation = Double(centerField.text!)!/100
-                HSL.lightness = Double(rightField.text!)!/100
+                HSL.lightness  = Double(rightField.text!)!/100
                 
                 let C = (1-abs(2*HSL.lightness-1)) * HSL.saturation
                 
@@ -323,41 +339,45 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
                 var Gp = 0.0
                 var Bp = 0.0
                 
-                if(HSL.hue >= 0 && HSL.hue < 60)
+                switch (HSL.hue)
                 {
-                    Rp = C
-                    Gp = X
-                    Bp = 0
-                }
-                else if(HSL.hue >= 60 && HSL.hue < 120)
-                {
-                    Rp = X
-                    Gp = C
-                    Bp = 0
-                }
-                else if(HSL.hue >= 120 && HSL.hue < 180)
-                {
-                    Rp = 0
-                    Gp = C
-                    Bp = X
-                }
-                else if(HSL.hue >= 180 && HSL.hue < 240)
-                {
-                    Rp = 0
-                    Gp = X
-                    Bp = C
-                }
-                else if(HSL.hue >= 240 && HSL.hue < 300)
-                {
-                    Rp = X
-                    Gp = 0
-                    Bp = C
-                }
-                else if(HSL.hue >= 300 && HSL.hue < 360)
-                {
-                    Rp = C
-                    Gp = 0
-                    Bp = X
+                    case 0..<60:
+                        Rp = C
+                        Gp = X
+                        Bp = 0
+                    break;
+                        
+                    case 60..<120:
+                        Rp = X
+                        Gp = C
+                        Bp = 0
+                    break;
+                        
+                    case 120..<180:
+                        Rp = 0
+                        Gp = C
+                        Bp = X
+                    break;
+                    
+                    case 180..<240:
+                        Rp = 0
+                        Gp = X
+                        Bp = C
+                    break;
+                        
+                    case 240..<300:
+                        Rp = X
+                        Gp = 0
+                        Bp = C
+                    break;
+                        
+                    case 300..<360:
+                        Rp = C
+                        Gp = 0
+                        Bp = X
+                    break;
+                    
+                    default: break;
                 }
                 
                 RGB.red = Int(round((Rp+m)*255))
@@ -376,7 +396,7 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
                 HSV.value = Cmax
                 
                 if(Cmax == 0) {HSV.saturation = 0}
-                if(Cmax != 0) {HSV.saturation = Delta/Cmax}
+                else          {HSV.saturation = Delta/Cmax}
                 
                 hexStrc.red = String(format:"%02X", Int(RGB.red))
                 hexStrc.green = String(format:"%02X", Int(RGB.green))
@@ -424,42 +444,47 @@ class ColorConversionsViewController: UIViewController, UIPickerViewDataSource,U
                 var Gp = 0.0
                 var Bp = 0.0
                 
-                if(HSV.hue >= 0 && HSV.hue < 60)
+                switch (HSV.hue)
                 {
-                    Rp = C
-                    Gp = X
-                    Bp = 0
+                    case 0..<60:
+                        Rp = C
+                        Gp = X
+                        Bp = 0
+                    break;
+                        
+                    case 60..<120:
+                        Rp = X
+                        Gp = C
+                        Bp = 0
+                    break;
+                        
+                    case 120..<180:
+                        Rp = 0
+                        Gp = C
+                        Bp = X
+                    break;
+                    
+                    case 180..<240:
+                        Rp = 0
+                        Gp = X
+                        Bp = C
+                    break;
+                        
+                    case 240..<300:
+                        Rp = X
+                        Gp = 0
+                        Bp = C
+                    break;
+                        
+                    case 300..<360:
+                        Rp = C
+                        Gp = 0
+                        Bp = X
+                    break;
+                    
+                    default: break;
                 }
-                else if(HSV.hue >= 60 && HSV.hue < 120)
-                {
-                    Rp = X
-                    Gp = C
-                    Bp = 0
-                }
-                else if(HSV.hue >= 120 && HSV.hue < 180)
-                {
-                    Rp = 0
-                    Gp = C
-                    Bp = X
-                }
-                else if(HSV.hue >= 180 && HSV.hue < 240)
-                {
-                    Rp = 0
-                    Gp = X
-                    Bp = C
-                }
-                else if(HSV.hue >= 240 && HSV.hue < 300)
-                {
-                    Rp = X
-                    Gp = 0
-                    Bp = C
-                }
-                else if(HSV.hue >= 300 && HSV.hue < 360)
-                {
-                    Rp = C
-                    Gp = 0
-                    Bp = X
-                }
+
                 
                 RGB.red = Int(round((Rp+m)*255))
                 RGB.green = Int(round((Gp+m)*255))

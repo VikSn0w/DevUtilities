@@ -59,19 +59,19 @@ class IPControllerViewController: UIViewController
         else
         {
             TipoLabel.text = ""
-            var PrimoOttettoIP         = Int(FieldPrimoOttetto!.text!)!
+            let PrimoOttettoIP         = Int(FieldPrimoOttetto!.text!)!
             IPAddress().PrimoOttetto   = PrimoOttettoIP
             
-            var SecondoOttettoIP       = Int(FieldSecondoOttetto!.text!)!
+            let SecondoOttettoIP       = Int(FieldSecondoOttetto!.text!)!
             IPAddress().SecondoOttetto = SecondoOttettoIP
             
-            var TerzoOttettoIP         = Int(FieldTerzoOttetto!.text!)!
+            let TerzoOttettoIP         = Int(FieldTerzoOttetto!.text!)!
             IPAddress().TerzoOttetto   = TerzoOttettoIP
             
-            var QuartoOttettoIP        = Int(FieldQuartoOttetto!.text!)!
+            let QuartoOttettoIP        = Int(FieldQuartoOttetto!.text!)!
             IPAddress().QuartoOttetto  = QuartoOttettoIP
             
-            var SlashNotation          = Int(FieldSubnetMaskSL!.text!)!
+            let SlashNotation          = Int(FieldSubnetMaskSL!.text!)!
             SubnetMask().SlashNotation = SlashNotation
             
             //-----------------------------CONTROLLI----------------------------------
@@ -104,54 +104,27 @@ class IPControllerViewController: UIViewController
             
             if(SlashNotation >= 0)
             {
-                if(SlashNotation == 1) {PrimoOttettoSN = 128;}
-                if(SlashNotation == 2) {PrimoOttettoSN = 192;}
-                if(SlashNotation == 3) {PrimoOttettoSN = 224;}
-                if(SlashNotation == 4) {PrimoOttettoSN = 240;}
-                if(SlashNotation == 5) {PrimoOttettoSN = 248;}
-                if(SlashNotation == 6) {PrimoOttettoSN = 252;}
-                if(SlashNotation == 7) {PrimoOttettoSN = 254;}
-                if(SlashNotation == 8) {PrimoOttettoSN = 255;}
+                PrimoOttettoSN = Int(pow(Double(2), Double((8-(SlashNotation%8)))))-1;
                 if(SlashNotation > 8)
                 {
-                    PrimoOttettoSN = 255
-                    if(SlashNotation == 9)  {SecondoOttettoSN = 128;}
-                    if(SlashNotation == 10) {SecondoOttettoSN = 192;}
-                    if(SlashNotation == 11) {SecondoOttettoSN = 224;}
-                    if(SlashNotation == 12) {SecondoOttettoSN = 240;}
-                    if(SlashNotation == 13) {SecondoOttettoSN = 248;}
-                    if(SlashNotation == 14) {SecondoOttettoSN = 252;}
-                    if(SlashNotation == 15) {SecondoOttettoSN = 254;}
-                    if(SlashNotation == 16) {SecondoOttettoSN = 255;}
+                    PrimoOttettoSN   = 255;
+                    SecondoOttettoSN = Int(pow(Double(2), Double((8-(SlashNotation%8)))))-1;
+                    
                     if(SlashNotation > 16)
                     {
                         PrimoOttettoSN = 255; SecondoOttettoSN = 255;
-                        if(SlashNotation == 17) {TerzoOttettoSN = 128;}
-                        if(SlashNotation == 18) {TerzoOttettoSN = 192;}
-                        if(SlashNotation == 19) {TerzoOttettoSN = 224;}
-                        if(SlashNotation == 20) {TerzoOttettoSN = 240;}
-                        if(SlashNotation == 21) {TerzoOttettoSN = 248;}
-                        if(SlashNotation == 22) {TerzoOttettoSN = 252;}
-                        if(SlashNotation == 23) {TerzoOttettoSN = 254;}
-                        if(SlashNotation == 24) {TerzoOttettoSN = 255;}
+                        TerzoOttettoSN = Int(pow(Double(2), Double((8-(SlashNotation%8)))))-1;
+                        
                         if(SlashNotation > 24)
                         {
-                            PrimoOttettoSN = 255; SecondoOttettoSN = 255; TerzoOttettoSN = 255;
-                            if(SlashNotation == 25) {QuartoOttettoSN = 128;}
-                            if(SlashNotation == 26) {QuartoOttettoSN = 192;}
-                            if(SlashNotation == 27) {QuartoOttettoSN = 224;}
-                            if(SlashNotation == 28) {QuartoOttettoSN = 240;}
-                            if(SlashNotation == 29) {QuartoOttettoSN = 248;}
-                            if(SlashNotation == 30) {QuartoOttettoSN = 252;}
-                            if(SlashNotation == 31) {QuartoOttettoSN = 254;}
-                            if(SlashNotation == 32) {QuartoOttettoSN = 255;}
+                            PrimoOttettoSN  = 255; SecondoOttettoSN = 255; TerzoOttettoSN   = 255;
+                            QuartoOttettoSN = Int(pow(Double(2), Double((8-(SlashNotation%8)))))-1;
                         }
                     }
                 }
-                
-                SubnetLabel.text = String(PrimoOttettoSN) + "." + String(SecondoOttettoSN) + "." + String(TerzoOttettoSN) + "." + String(QuartoOttettoSN)
             }
             
+            SubnetLabel.text = String(PrimoOttettoSN) + "." + String(SecondoOttettoSN) + "." + String(TerzoOttettoSN) + "." + String(QuartoOttettoSN)
             
             //-----------------------------CALCOLO BROADCAST!----------------------------------
             var PrimoOttettoBR   = PrimoOttettoIP   |  ~PrimoOttettoSN
@@ -197,43 +170,47 @@ class IPControllerViewController: UIViewController
             //-------------------------------TIPO-------------------------------------
             let Esteso = String(PrimoOttettoIP) + "." + String(SecondoOttettoIP) + "." + String(TerzoOttettoIP) + "." + String(QuartoOttettoIP)
             
-            if(Esteso == Broadcast)
+            switch (Esteso)
             {
-                TipoLabel.text = "Broadcast"
-            }
-            if(Esteso == Rete)
-            {
-                TipoLabel.text = "Rete"
-            }
-            if(Esteso != Rete && Esteso != Broadcast)
-            {
-                TipoLabel.text = "Host"
+                case Broadcast:
+                    TipoLabel.text = "Broadcast"
+                break;
+                    
+                case Rete:
+                    TipoLabel.text = "Rete"
+                break;
+                    
+                default:
+                    TipoLabel.text = "Host"
+                break;
             }
             
-            
-            if(PrimoOttettoIP >= 0 && PrimoOttettoIP < 128)
+            switch(PrimoOttettoIP)
             {
-                ClasseField.text = "A";
-            }
-            if(PrimoOttettoIP >= 128 && PrimoOttettoIP < 192)
-            {
-                 ClasseField.text = "B";
-            }
-            if(PrimoOttettoIP >= 192 && PrimoOttettoIP < 224)
-            {
-                 ClasseField.text = "C";
-            }
-            if(PrimoOttettoIP >= 224 && PrimoOttettoIP < 240)
-            {
-                 ClasseField.text = "D";
-            }
-            if(PrimoOttettoIP >= 240 && PrimoOttettoIP < 248)
-            {
-                 ClasseField.text = "E";
-            }
-            if(PrimoOttettoIP >= 248)
-            {
-                 ClasseField.text = "Classe non definita";
+                case 0..<128:
+                    ClasseField.text = "A";
+                break;
+                    
+                case 128..<192:
+                    ClasseField.text = "B";
+                break;
+                    
+                case 192..<224:
+                    ClasseField.text = "C";
+                break;
+                
+                case 224..<240:
+                    ClasseField.text = "D";
+                break;
+                    
+                case 240..<248:
+                    ClasseField.text = "E";
+                break;
+                    
+                default:
+                    ClasseField.text = "Classe non definita";
+                break;
+                    
             }
             
             func Bitted(string : String, toSize: Int) -> String

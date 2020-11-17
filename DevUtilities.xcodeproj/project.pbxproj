@@ -33,6 +33,8 @@
 		54A85AB424899FE6009E6381 /* InAppOpen_Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A85AB324899FE6009E6381 /* InAppOpen_Credits.swift */; };
 		54C512A8248A7C61003B6D42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C512A7248A7C61003B6D42 /* ViewController.swift */; };
 		54C512AB248A9389003B6D42 /* Time_Complexity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C512AA248A9389003B6D42 /* Time_Complexity.swift */; };
+		5BA18D58250A2799007300C5 /* ConversionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA18D57250A2799007300C5 /* ConversionsController.swift */; };
+		5BA18D5E250A28AB007300C5 /* ColorConversionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA18D5D250A28AB007300C5 /* ColorConversionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		54A85AB324899FE6009E6381 /* InAppOpen_Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppOpen_Credits.swift; sourceTree = "<group>"; };
 		54C512A7248A7C61003B6D42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		54C512AA248A9389003B6D42 /* Time_Complexity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_Complexity.swift; sourceTree = "<group>"; };
+		5BA18D57250A2799007300C5 /* ConversionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionsController.swift; sourceTree = "<group>"; };
+		5BA18D5D250A28AB007300C5 /* ColorConversionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConversionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 			children = (
 				547B44522489C53F00E890BE /* IPControllerViewController.swift */,
 				547B445C2489D00900E890BE /* Binary Operations */,
+				5BA18D5C250A288B007300C5 /* Color */,
 				547B445B2489CFE800E890BE /* Conversions */,
 				54C512A9248A935E003B6D42 /* Algorithms_Operations */,
 			);
@@ -158,6 +163,7 @@
 		547B445B2489CFE800E890BE /* Conversions */ = {
 			isa = PBXGroup;
 			children = (
+				5BA18D57250A2799007300C5 /* ConversionsController.swift */,
 			);
 			path = Conversions;
 			sourceTree = "<group>";
@@ -264,6 +270,14 @@
 			path = Algorithms_Operations;
 			sourceTree = "<group>";
 		};
+		5BA18D5C250A288B007300C5 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				5BA18D5D250A28AB007300C5 /* ColorConversionsViewController.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -327,7 +341,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Vittorio Picone";
 				TargetAttributes = {
 					54A85A6D24896B81009E6381 = {
@@ -403,7 +417,9 @@
 			files = (
 				547B44532489C53F00E890BE /* IPControllerViewController.swift in Sources */,
 				547B44462489A51700E890BE /* InstagramViksn0wViewController.swift in Sources */,
+				5BA18D5E250A28AB007300C5 /* ColorConversionsViewController.swift in Sources */,
 				547B44552489C79300E890BE /* PrimeVerifierViewController.swift in Sources */,
+				5BA18D58250A2799007300C5 /* ConversionsController.swift in Sources */,
 				547B44482489A68500E890BE /* InstagramViksn0wDesignController.swift in Sources */,
 				54C512A8248A7C61003B6D42 /* ViewController.swift in Sources */,
 				54A85AB424899FE6009E6381 /* InAppOpen_Credits.swift in Sources */,
@@ -496,6 +512,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -556,6 +573,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -590,13 +608,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DevUtilities/DevUtilities.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_TEAM = YWUZ5CD858;
 				INFOPLIST_FILE = DevUtilities/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = pop.viksn0w.np.DevUtilities;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -611,13 +630,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DevUtilities/DevUtilities.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_TEAM = YWUZ5CD858;
 				INFOPLIST_FILE = DevUtilities/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = pop.viksn0w.np.DevUtilities;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

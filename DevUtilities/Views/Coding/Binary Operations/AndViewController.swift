@@ -31,14 +31,10 @@ class AndViewController: UIViewController, UIPickerViewDataSource,UIPickerViewDe
     {
         selection = row
         print("Selected : \(Operations[row])");
-        if(Operations[selection] == "Not [ ! ]")
-        {
-            insertSecond.isUserInteractionEnabled = false
-        }
-        else
-        {
-            insertSecond.isUserInteractionEnabled = true
-        }
+        var flag = false
+        if(Operations[selection] == "Not [ ! ]") {flag = false}
+        else                                     {flag = true}
+        insertSecond.isUserInteractionEnabled = flag
     }
 
 

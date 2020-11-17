@@ -38,22 +38,29 @@ class ConversionsController: UIViewController, UIPickerViewDataSource,UIPickerVi
     {
         selection = row
         
-        if(Operations[row] == "DEC")
+        var stringOp = ""
+        
+        switch (Operations[row])
         {
-            textField.attributedPlaceholder = NSAttributedString(string:"Enter Decimal", attributes: nil)
+            case "DEC":
+                stringOp = "Enter Decimal"
+            break;
+                
+            case "HEX":
+                stringOp = "Enter Hexadecimal"
+            break;
+            
+            case "OCT":
+                stringOp = "Enter Octal"
+            break;
+            
+            case "BIN":
+                stringOp = "Enter Binary"
+            break;
+            
+            default: break;
         }
-        else if(Operations[row] == "HEX")
-        {
-            textField.attributedPlaceholder = NSAttributedString(string:"Enter Hexadecimal", attributes: nil)
-        }
-        else if(Operations[row] == "OCT")
-        {
-            textField.attributedPlaceholder = NSAttributedString(string:"Enter Octal", attributes: nil)
-        }
-        else if(Operations[row] == "BIN")
-        {
-            textField.attributedPlaceholder = NSAttributedString(string:"Enter Binary", attributes: nil)
-        }
+        textField.attributedPlaceholder = NSAttributedString(string: stringOp, attributes: nil)
     }
     
     @IBAction func Calculate(_ sender: Any)
