@@ -2,10 +2,16 @@
 Good Utilities for Good Devs. An utility app for iOS and macOS written in Swift
 
 
-DevUtilities provides plenty of utilities for coding, coded for coders. It has the necessary for fast calculations and operations, like Binary operations, Conversions, IP Operations and many more functions! 
+DevUtilities provides plenty of utilities for coding, coded for coders. It has the necessary for fast calculations and operations, like Bitwise operations, Conversions, IP Operations and many more functions! 
 
 
 ## Changelog:
+### 2.3 r60
+- Code optimisation
+  - if-else cycles changed to switch-case where possible
+- Bug Fixes
+- Added XOR operation in the Bitwise category
+
 ### 2.2 r50
 - Code optimisation
   - if-else cycles changed to switch-case where possible
