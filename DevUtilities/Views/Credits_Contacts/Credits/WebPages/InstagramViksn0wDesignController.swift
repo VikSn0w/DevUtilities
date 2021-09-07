@@ -11,8 +11,7 @@ import WebKit
 
 class InstagramViksn0wDesignController: UIViewController, WKUIDelegate
 {
-
-    @IBOutlet weak var WebKit: WKWebView!
+    @IBOutlet var WebKit: WKWebView!
     
     override func loadView()
     {

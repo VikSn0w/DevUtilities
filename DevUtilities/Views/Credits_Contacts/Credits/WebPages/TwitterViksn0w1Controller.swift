@@ -9,10 +9,10 @@
 import UIKit
 import WebKit
 
-class TwitterViksn0w1Controller: UIViewController, WKUIDelegate {
+class TwitterViksn0w1Controller: UIViewController, WKUIDelegate
+{
+    @IBOutlet var WebKit: WKWebView!
 
-    @IBOutlet weak var WebKit: WKWebView!
-    
     override func loadView()
     {
         let webConfiguration = WKWebViewConfiguration()

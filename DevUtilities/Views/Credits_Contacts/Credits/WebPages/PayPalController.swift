@@ -12,7 +12,7 @@ import WebKit
 class PayPalController: UIViewController, WKUIDelegate
 {
 
-    @IBOutlet weak var WebKit: WKWebView!
+    @IBOutlet var WebKit: WKWebView!
     override func loadView()
     {
         let webConfiguration = WKWebViewConfiguration()
