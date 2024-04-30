@@ -1,4 +1,5 @@
-# DevUtilities <img src="https://i.ibb.co/r0XQJ5C/logo.png" width="60" height="60"> 
+# DevUtilities <img src="https://i.ibb.co/r0XQJ5C/logo.png" width="60" height="60"> (Archived)
+The project is no longer mantained. I suggest you to check out my new project that replaces and expands the concept and the scope of it: [DevBox](https://github.com/VikSn0w/DevBox).
 Good Utilities for Good Devs. An utility app for iOS and macOS written in Swift
 
 
